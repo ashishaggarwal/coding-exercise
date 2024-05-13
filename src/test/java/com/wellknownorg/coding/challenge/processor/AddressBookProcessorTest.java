@@ -20,16 +20,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class PersonProcessorTest {
+public class AddressBookProcessorTest {
 
     @Mock
     private PersonRepository personRepository;
 
-    private PersonProcessor unitUnderTest;
+    private AddressBookProcessor unitUnderTest;
 
     @BeforeEach
     public void setUp() {
-        unitUnderTest = new PersonProcessor(personRepository);
+        unitUnderTest = new AddressBookProcessor(personRepository);
     }
 
     @Test

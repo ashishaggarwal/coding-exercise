@@ -2,6 +2,7 @@ package com.wellknownorg.coding.challenge.processor;
 
 import com.wellknownorg.coding.challenge.model.Person;
 import com.wellknownorg.coding.challenge.repository.PersonRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -11,22 +12,30 @@ import static com.wellknownorg.coding.challenge.model.Gender.MALE;
 import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toMap;
 
+@Slf4j
 @Component
-public record PersonProcessor(PersonRepository personRepository) {
+public record AddressBookProcessor(PersonRepository personRepository) {
 
     public int countMales() {
-        return initializeIfNull(personRepository.getPersons())
+        int numberOfMales = initializeIfNull(personRepository.getPersons())
                 .stream()
                 .filter(person -> person.gender() != null && person.gender() == MALE)
                 .toList()
                 .size();
+
+        log.info("=======Number of Males in address book=======> {}", numberOfMales);
+        return numberOfMales;
     }
 
     public Person findOldestPerson() {
-        return initializeIfNull(personRepository.getPersons())
+        Person oldestPerson = initializeIfNull(personRepository.getPersons())
                 .stream()
                 .min(Comparator.comparing(Person::dateOfBirth))
                 .orElseThrow(() -> new IllegalArgumentException("Cannot determine oldest person as there might be more than one person with same age"));
+
+        log.info("=======Oldest person in address book=======> {}", oldestPerson);
+
+        return oldestPerson;
     }
 
     public long calculateAgeDiff(String nameOfOlderPerson, String nameOfYoungerPerson) {
@@ -42,7 +51,10 @@ public record PersonProcessor(PersonRepository personRepository) {
                 || person1.dateOfBirth().isAfter(person2.dateOfBirth())) {
             throw new IllegalArgumentException("Cannot determine age difference");
         }
-        return DAYS.between(person1.dateOfBirth(), person2.dateOfBirth());
+        long ageDifferenceInDays = DAYS.between(person1.dateOfBirth(), person2.dateOfBirth());
+
+        log.info("=======Age difference in days between {} and {} =======> {}", nameOfOlderPerson, nameOfYoungerPerson, ageDifferenceInDays);
+        return ageDifferenceInDays;
     }
 
     private boolean personOrDobIsNull(Person person) {

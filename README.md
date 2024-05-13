@@ -51,7 +51,7 @@ The application can also be run from Intellij by running the main java class
 * The order in file will be Name, Gender, Date of Birth
 * Date of Birth will be in the format dd/MM/yy
 * It is assumed that date of birth will be supplied between 1924-2024 e.g. 01/01/10 will be considered 1 January 2010 but 01/01/25 will be considered 1 January 1925
-* There should not be exactly 3 comma separated values in the file else an exception will be thrown
+* There should be exactly 3 comma separated values in the file else an exception will be thrown
 * You can enter blank values in the file. They will be treated as `null` as we don't want to break the whole application if one value is null
   e.g. if Gender is not provided other methods like getting the oldest person and calculating
   age difference between two people will still work

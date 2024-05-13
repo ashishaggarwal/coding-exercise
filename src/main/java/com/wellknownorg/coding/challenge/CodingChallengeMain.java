@@ -1,6 +1,6 @@
 package com.wellknownorg.coding.challenge;
 
-import com.wellknownorg.coding.challenge.file.FileReader;
+import com.wellknownorg.coding.challenge.file.read.FileReader;
 import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

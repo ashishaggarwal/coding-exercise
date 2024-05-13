@@ -1,5 +1,6 @@
-import com.wellknownorg.coding.challenge.file.FileParser;
-import com.wellknownorg.coding.challenge.file.FileReader;
+package com.wellknownorg.coding.challenge.file.read;
+
+import com.wellknownorg.coding.challenge.service.PersonService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,10 +11,10 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class TestFileReader {
+class FileReaderTest {
 
     @Mock
-    private FileParser fileParser;
+    private PersonService personService;
 
     @InjectMocks
     private FileReader unitUnderTest;
@@ -22,13 +23,20 @@ class TestFileReader {
     public void shouldNotParseFile_givenFileDoesNotExists() {
         unitUnderTest.readFile("test.txt");
 
-        verifyNoInteractions(fileParser);
+        verifyNoInteractions(personService);
+    }
+
+    @Test
+    public void shouldParseFile_givenBlankFile() {
+        unitUnderTest.readFile("blank.csv");
+
+        verifyNoInteractions(personService);
     }
 
     @Test
     public void shouldParseFile_givenFileExists() {
         unitUnderTest.readFile("test.csv");
 
-        verify(fileParser).parse("test");
+        verify(personService).add(new String[] {"John", " Male", " 04/02/00"});
     }
 }

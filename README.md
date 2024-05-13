@@ -39,11 +39,16 @@ Run following command to build the application
 
 The application can be run using following command from the root of the project:
 
-`mvn spring-boot:run -Dspring-boot.run.arguments=--addressbook.filename=input.csv
+`mvn spring-boot:run`
+
+This command will use `input.csv` file located under `src/main/resources` folder
+
+The application can be run with a different input file by running following command:
+
+`mvn spring-boot:run -Dspring-boot.run.arguments=--addressbook.filename=<your-file-name>
 `
 
-Please note the application can be run with a different file, just
-replace input.csv in above command with the file you want to use.
+Just replace <your-file-name> in above command with the file you want to use.
 Also make sure that file exists under `src/main/resources` folder in the project
 
 The application can also be run from Intellij by running the main java class 

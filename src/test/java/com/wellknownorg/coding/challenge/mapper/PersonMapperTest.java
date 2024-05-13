@@ -1,6 +1,6 @@
 package com.wellknownorg.coding.challenge.mapper;
 
-import com.wellknownorg.coding.challenge.date.MyDateFormatter;
+import com.wellknownorg.coding.challenge.date.DateFormatter;
 import com.wellknownorg.coding.challenge.model.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,20 +20,20 @@ import static org.mockito.Mockito.when;
 class PersonMapperTest {
 
     @Mock
-    private MyDateFormatter myDateFormatter;
+    private DateFormatter dateFormatter;
 
     private PersonMapper unitUnderTest;
 
     @BeforeEach
     public void setUp() {
-        unitUnderTest = new PersonMapper(myDateFormatter);
+        unitUnderTest = new PersonMapper(dateFormatter);
     }
 
     @Test
     public void shouldMapToPerson() {
         String [] data = new String[] {"John Smith", "Male", "01/02/90"};
         LocalDate dateOfBirth = LocalDate.of(1990, 2, 1);
-        when(myDateFormatter.parse("01/02/90")).thenReturn(dateOfBirth);
+        when(dateFormatter.parse("01/02/90")).thenReturn(dateOfBirth);
 
         Person person = unitUnderTest.mapToPerson(data);
 
@@ -46,7 +46,7 @@ class PersonMapperTest {
     public void shouldMapToPerson_givenNameIsBlank() {
         String [] data = new String[] {"", "Male", "01/02/90"};
         LocalDate dateOfBirth = LocalDate.of(1990, 2, 1);
-        when(myDateFormatter.parse("01/02/90")).thenReturn(dateOfBirth);
+        when(dateFormatter.parse("01/02/90")).thenReturn(dateOfBirth);
 
         Person person = unitUnderTest.mapToPerson(data);
 
@@ -59,7 +59,7 @@ class PersonMapperTest {
     public void shouldMapToPerson_givenNameHasOnlySpaces() {
         String [] data = new String[] {" ", "Male", "01/02/90"};
         LocalDate dateOfBirth = LocalDate.of(1990, 2, 1);
-        when(myDateFormatter.parse("01/02/90")).thenReturn(dateOfBirth);
+        when(dateFormatter.parse("01/02/90")).thenReturn(dateOfBirth);
 
         Person person = unitUnderTest.mapToPerson(data);
 

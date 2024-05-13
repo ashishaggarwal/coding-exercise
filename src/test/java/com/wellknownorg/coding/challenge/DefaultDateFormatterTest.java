@@ -1,6 +1,7 @@
 package com.wellknownorg.coding.challenge;
 
-import com.wellknownorg.coding.challenge.date.MyDateFormatter;
+import com.wellknownorg.coding.challenge.date.DateFormatter;
+import com.wellknownorg.coding.challenge.date.DefaultDateFormatter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,13 +15,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
-public class MyDateFormatterTest {
+public class DefaultDateFormatterTest {
 
-    private MyDateFormatter unitUnderTest;
+    private DateFormatter unitUnderTest;
 
     @BeforeEach
     public void setUp() {
-        unitUnderTest = new TestDateFormatter();
+        unitUnderTest = new DefaultDateFormatter();
     }
 
     @Test
@@ -40,9 +41,4 @@ public class MyDateFormatterTest {
         assertThrows(DateTimeParseException.class,
                 () -> unitUnderTest.parse("01-02-90"));
     }
-
-    class TestDateFormatter implements MyDateFormatter {
-
-    }
-
 }

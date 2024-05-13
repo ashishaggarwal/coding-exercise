@@ -1,14 +1,17 @@
 package com.wellknownorg.coding.challenge.date;
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 
 import static java.time.temporal.ChronoField.YEAR;
 
-public interface MyDateFormatter {
+@Component
+public class DefaultDateFormatter implements DateFormatter {
 
-    default LocalDate parse(String dateString) {
+    public LocalDate parse(String dateString) {
         DateTimeFormatter dateTimeFormatter = new DateTimeFormatterBuilder()
                 .appendPattern("dd/MM/")
                 .optionalStart()

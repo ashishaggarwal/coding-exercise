@@ -3,7 +3,9 @@ package com.wellknownorg.coding.challenge.service;
 import com.wellknownorg.coding.challenge.mapper.PersonMapper;
 import com.wellknownorg.coding.challenge.model.Person;
 import com.wellknownorg.coding.challenge.repository.PersonRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public record PersonService (PersonMapper personMapper,
                              PersonRepository personRepository) {
 

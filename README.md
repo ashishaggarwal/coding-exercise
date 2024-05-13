@@ -27,13 +27,15 @@ Wes Jackson, Male, 14/08/74 <br />
 # Prerequisites
 
 The project would need JDK 22 and Maven to build/run
-## Building
+
+
+# Building
 
 Run following command to build the application
 
 `mvn clean install
 `
-## Running
+# Running
 
 The application can be run using following command from the root of the project:
 

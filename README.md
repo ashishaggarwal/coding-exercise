@@ -3,17 +3,17 @@
 </h1>
 <p align="center">
 <a href="#introduction">Introduction</a> &nbsp;&bull;&nbsp;
+<a href="#prerequisites">Prerequisites</a> &nbsp;&bull;&nbsp;
 <a href="#building">Building</a> &nbsp;&bull;&nbsp;
 <a href="#running">Running</a> &nbsp;&bull;&nbsp;
-<a href="#technical">Technical</a> &nbsp;&bull;&nbsp;
 <a href="#assumptions">Assumptions</a> &nbsp;&bull;&nbsp;
 </p>
 
 # Introduction
 This is a simple application to read the file (sample below) add answer following questions:
 
-* How many males are in the address book?
-* Who is the oldest person in the address book?
+* How many males are in the file?
+* Who is the oldest person in the file?
 * How many days older is Bill than Paul?
 
 Sample file contents:
@@ -24,6 +24,9 @@ Gemma Lane, Female, 20/11/91 <br />
 Sarah Stone, Female, 20/09/80 <br />
 Wes Jackson, Male, 14/08/74 <br />
 
+# Prerequisites
+
+The project would need JDK 22 and Maven to build/run
 ## Building
 
 Run following command to build the application
@@ -36,9 +39,10 @@ The application can be run using following command from the root of the project:
 
 `mvn spring-boot:run
 `
-## Technical Specifications
 
-The project is built using JDK 22 and Spring boot 3.2.5.
+The application can also be run from Intellij by running the main java class 
+
+`AddressBookMain`
 
 # **Assumptions**
 

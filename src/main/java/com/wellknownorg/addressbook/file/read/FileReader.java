@@ -20,7 +20,7 @@ public record FileReader(PersonService personService) {
         if (resourceAsStream != null) {
             read(resourceAsStream);
         } else {
-            log.warn("Not able to read file as it might not exist");
+            throw new IllegalArgumentException("Not able to read file");
         }
     }
 

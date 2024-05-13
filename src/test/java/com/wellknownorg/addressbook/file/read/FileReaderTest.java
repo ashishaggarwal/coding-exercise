@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
@@ -21,9 +22,8 @@ class FileReaderTest {
 
     @Test
     public void shouldNotParseFile_givenFileDoesNotExists() {
-        unitUnderTest.readFile("test.txt");
-
-        verifyNoInteractions(personService);
+        assertThrows(IllegalArgumentException.class,
+                () -> unitUnderTest.readFile("test.txt"));
     }
 
     @Test

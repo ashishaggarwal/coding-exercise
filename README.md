@@ -48,7 +48,7 @@ The application can be run with a different input file by running following comm
 `mvn spring-boot:run -Dspring-boot.run.arguments=--addressbook.filename=<your-file-name>
 `
 
-Just replace <your-file-name> in above command with the file you want to use.
+Replace `<your-file-name>` in above command with the file you want to use.
 Also make sure that file exists under `src/main/resources` folder in the project
 
 The application can also be run from Intellij by running the main java class 
